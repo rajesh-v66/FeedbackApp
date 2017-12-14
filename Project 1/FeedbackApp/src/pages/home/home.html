@@ -1,0 +1,213 @@
+<ion-header>
+  <ion-navbar>
+    <ion-row>
+      <ion-col col-9>
+        <ion-label>Welcome {{userEmail}}</ion-label>
+      </ion-col>
+      <ion-col col-3 (click)="logout()">
+        <ion-label fixed>Logout</ion-label>
+      </ion-col>
+    </ion-row>  
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup] = "form"
+    (ngSubmit) = "onSubmit(form.value)">
+  <ion-list>      
+        <ion-item>
+            <ion-label color="primary" floating>Name<span class="required">*</span></ion-label>
+            <ion-input type="text" formControlName = "name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary" >Batch</ion-label>
+            <ion-select formControlName="batch" >
+              <ion-option value="">Select</ion-option>
+              <ion-option *ngFor="let b of batches | async" [value]="b.batch_name">{{b.batch_name}}</ion-option>
+            </ion-select>
+            <span class="required">*</span>
+          </ion-item>
+    <ion-grid radio-group formControlName="info">
+      <ion-label text-wrap class="question-label" >
+          1) How useful was the information presented at this event?
+          <span class="required">*</span>
+      </ion-label>
+    <ion-item>
+      <ion-label>Extremely Useful</ion-label>
+      <ion-radio value="Extremely Useful" checked></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Quite Useful</ion-label>
+      <ion-radio value="Quite Useful"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Moderately Useful</ion-label>
+      <ion-radio value="Moderately Useful"></ion-radio>
+    </ion-item>
+    <ion-item>
+        <ion-label>Slightly Useful</ion-label>
+        <ion-radio value="Slightly Useful"></ion-radio>
+      </ion-item>
+      <ion-item>
+          <ion-label>Not at all Useful</ion-label>
+          <ion-radio value="Not at all Useful"></ion-radio>
+        </ion-item>
+    </ion-grid>
+
+    <ion-grid radio-group formControlName="handsOn">
+        <ion-label text-wrap class="question-label">
+            2) How much of the training at the event was hands-on?
+            <span class="required">*</span>
+        </ion-label>
+      <ion-item>
+        <ion-label>All of it</ion-label>
+        <ion-radio value="All of it" checked></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Most of it</ion-label>
+        <ion-radio value="Most of it"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>About half of it</ion-label>
+        <ion-radio value="About half of it"></ion-radio>
+      </ion-item>
+      <ion-item>
+          <ion-label>Some of it</ion-label>
+          <ion-radio value="Some of it"></ion-radio>
+        </ion-item>
+        <ion-item>
+            <ion-label>None of it</ion-label>
+            <ion-radio value="None of it"></ion-radio>
+          </ion-item>
+      </ion-grid>
+
+      <ion-grid radio-group formControlName="organized">
+          <ion-label text-wrap class="question-label">
+              3) How organized was the information presented at this event?
+              <span class="required">*</span>
+          </ion-label>
+        <ion-item>
+          <ion-label>Extremely organized</ion-label>
+          <ion-radio value="Extremely organized" checked></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Quite organized</ion-label>
+          <ion-radio value="Quite organized"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Moderately organized</ion-label>
+          <ion-radio value="Moderately organized"></ion-radio>
+        </ion-item>
+        <ion-item>
+            <ion-label>Slightly organized</ion-label>
+            <ion-radio value="Slightly organized"></ion-radio>
+          </ion-item>
+          <ion-item>
+              <ion-label>Not at all organized</ion-label>
+              <ion-radio value="Not at all organized"></ion-radio>
+            </ion-item>
+        </ion-grid>
+
+        
+    <ion-grid radio-group formControlName="objectives">
+        <ion-label text-wrap class="question-label">
+            4) How many of the objectives of the event were met?
+            <span class="required">*</span>
+        </ion-label>
+      <ion-item>
+        <ion-label>All of them</ion-label>
+        <ion-radio value="All of them" checked></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Most of them</ion-label>
+        <ion-radio value="Most of them"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>About half of them</ion-label>
+        <ion-radio value="About half of them"></ion-radio>
+      </ion-item>
+      <ion-item>
+          <ion-label>Some of them</ion-label>
+          <ion-radio value="Some of them"></ion-radio>
+        </ion-item>
+        <ion-item>
+            <ion-label>None of them</ion-label>
+            <ion-radio value="None of them"></ion-radio>
+          </ion-item>
+      </ion-grid>
+
+      <ion-grid radio-group formControlName="preparation">
+          <ion-label text-wrap class="question-label">
+              5) How prepared was the presenter?
+              <span class="required">*</span>
+          </ion-label>
+        <ion-item>
+          <ion-label>Extremely prepared</ion-label>
+          <ion-radio value="Extremely prepared" checked></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Very prepared</ion-label>
+          <ion-radio value="Very prepared"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Moderately prepared</ion-label>
+          <ion-radio value="Moderately prepared"></ion-radio>
+        </ion-item>
+        <ion-item>
+            <ion-label>Slightly prepared</ion-label>
+            <ion-radio value="Slightly prepared"></ion-radio>
+          </ion-item>
+          <ion-item>
+              <ion-label>Not at all prepared</ion-label>
+              <ion-radio value="Not at all prepared"></ion-radio>
+            </ion-item>
+        </ion-grid>
+
+        <ion-grid radio-group formControlName="satisfaction">
+            <ion-label text-wrap class="question-label">
+                6)  Overall, were you satisfied with this training?
+                <span class="required">*</span>
+            </ion-label>
+          <ion-item>
+            <ion-label>Extremely satisfied</ion-label>
+            <ion-radio value="Extremely satisfied" checked></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Quite satisfied</ion-label>
+            <ion-radio value="Quite satisfied"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Neither satisfied nor dissatisfied</ion-label>
+            <ion-radio value="Neither satisfied nor dissatisfied"></ion-radio>
+          </ion-item>
+          <ion-item>
+              <ion-label>Quite dissatisfied</ion-label>
+              <ion-radio value="Quite dissatisfied"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>Extremely dissatisfied</ion-label>
+                <ion-radio value="Extremely dissatisfied"></ion-radio>
+              </ion-item>
+          </ion-grid>
+
+          <ion-grid>
+            <ion-label text-wrap class="question-label">
+                Do you have any other comments, questions, or concerns?
+            </ion-label>
+            <ion-item>
+                <ion-textarea  formControlName="comments"></ion-textarea>
+            </ion-item>
+          </ion-grid>
+  </ion-list>
+
+</form>
+</ion-content>
+
+<ion-footer padding no-shadow>
+    <ion-toolbar position="bottom">
+        <button ion-button block [disabled]="!form.valid" (click)="onSubmit(form.value)">Send Feedback</button>
+    </ion-toolbar>
+</ion-footer>
+
+
